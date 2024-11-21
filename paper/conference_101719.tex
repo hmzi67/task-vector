@@ -17,13 +17,13 @@
 \IEEEauthorblockA{\textit{MSDS} \\
 \textit{24I-8029}\\}
 \and
-\IEEEauthorblockN{Abdullah Asghar}
-\IEEEauthorblockA{\textit{MSDS} \\
-\textit{24I-8000}\\}
-\and
 \IEEEauthorblockN{Hamza Waheed}
 \IEEEauthorblockA{\textit{MSDS} \\
 \textit{24I-7628}\\}
+\and
+\IEEEauthorblockN{Abdullah Asghar}
+\IEEEauthorblockA{\textit{MSDS} \\
+\textit{24I-8000}\\}
 \and
 \IEEEauthorblockN{Abdul Wahab}
 \IEEEauthorblockA{\textit{MSDS} \\
@@ -47,7 +47,7 @@ In the last few years AI (Artificial Intelligence) has taken the world. AI model
 While performing fine tuning for experimentation on MNIST dataset we observed that overall our accuracy is decreasing, before fine tuning our accuracy was 91.70% and after fine tuning our accuracy decreased to 70% which is a huge difference.
 
 
-\subsection{Equations}
+\subsection{Methamatical Equations}
 The fine-tuning process can be mathematically represented as follows:
 
 1. Start with the pre-trained model:
@@ -88,15 +88,25 @@ In this approach, the pre-trained model \( \mathcal{M} \) is fine-tuned incremen
 This method ensures that each class contributes to the model's performance individually, preventing performance degradation that can arise from merging tasks. As a result, we achieved a significant accuracy improvement compared to merging all classes before fine-tuning.
 
 \section{Related Work}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. Figure captions should be 
-below the figures; table heads should appear above the tables. Insert 
-figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
+\paragraph{Editing Models with Task Arithmetic} Training a model is the backbone of Machine learning because all the decisions will be done on its basis. Once training is done we retrain it according to our needs and feedback. This process is very costly due to following factors:
+Time and capital is effected most on retraining as we need to perform that process again so more time is utilized due to which more money is exhausted. We only have trained model instead of training data so we need to collect it again so need resources to do it.
+Fine tuning was introduced to address this problem but it requires labeled data so we need more efficient solution, here comes the solution of editing models with task arithmetic operations using task vectors. Task vector is weights in direction (Positive / Negative) which help the model to perform better.
+For example if we want to mitigate undesirable behaviors then we can change behaviors of model by negating as task vector similarly if we can to make model to learn new thing then we can do it by adding task vector. This performs well target tasks or even also improves performance and also efficient to compute as compared to fine tuning.
+
+\paragraph{LANGUAGE MODELS ARE HOMER SIMPSON! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic} The introduction tells about the advances and growth of LLMs, which have demonstrated satisfaction in different tasks. However, the fine-tuning process, which is meant to improve the model functionality in defined areas, usually results in compromise of safety. The authors cite earlier works that explain how fine-tuning can argue indirectly make the models unsafe. Here comes the concept of RESTA, whose aim is to reinstate safety without paying a heavy  price in performance appeal.
+The RESTA Method can be defined in either terms – simplicity and effectiveness. The primary activity consists of a safety vector being added in an elemental manner, to the model parameters. In addition to the authors also came up with a method called Drop and REscale (DARE) which assists in eliminating the extra parameters that were captured during the fine-tuning to increase the efficiency of the safety vectors.
+The authors made evaluations of RESTA on two ways of fine-tuning parameters called the parameter efficient fine-tuning PEFT and the full fine-tuning FullFT. It was observed that these two approaches compromised the safety of the models when used on several tasks, including those with harmless datasets. In order to evaluate the performance of RESTA, the authors created a safety evaluation benchmark known as CATQA, which contains 550 dangerous questions that have been divided into 11 groups, each of 5 sub-categories. Such a benchmark was purposefully developed in order to include all the abusive cases specified by OpenAI and Meta’s usage regulations.
+As it turned out, the results of the evaluations were promising. The authors noted that the fine-tuned models had a great decrease in the unsafety scores after applying RESTA. When for instance, the Llama-2 model was tested on CATQA, the unsafety score reduced from 33.57% to 12.17% in PEFT while in FullFT, the figure reduced from 22.16% to 4.34%. These results shows that RESTA enhances safety without compromising the performance of the model in a variety of tasks.
+
+\paragraph{Task Arithmetic in the Tangent Space: Improved Editing of Pre-Trained Models} Task arithmetic refers to the ability to perform arithmetic operations on the weights of a model to get desired outcomes for multiple tasks. This is cost-effective and scalable approach to edit pre-trained models directly in weight space. By changing the weights associated with different tasks, researchers can enhance a model's performance on those tasks or even negate certain tasks, leading to a phenomenon known as task forgetting. The authors highlight that traditional model editing methods often involve costly joint fine-tuning across multiple tasks, which can degrade the model's pre-training performance or zero-shot accuracy. Task arithmetic offers a promising alternative by allowing for more efficient adjustments to the model's weights.
+One of the most important contributions of the paper is a proposal to linearizing models in order to enhance weight disentanglement. The authors show that fine-tuning a model in its tangent space can amplify the disentanglement of weights and thus effectively improve performances across benchmark arithmetic tasks. Finally, the authors presented empirical results that linearizing models can bring 5.8 points of accuracy in task addition and 13.1 points less in task negation on various vision-language benchmarks.
+
+Experiment indicated that fine-tuning in the tangent space significantly improved the arithmetic benchmark for most tasks compared to the pre-trained models. 
+
+
 
 \section{Design and Implementation}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
+Place figures and tables at the top and 
 bottom of columns. Avoid placing them in the middle of columns. Large 
 figures and tables may span across both columns. Figure captions should be 
 below the figures; table heads should appear above the tables. Insert 
