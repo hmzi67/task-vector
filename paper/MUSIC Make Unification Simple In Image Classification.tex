@@ -109,30 +109,54 @@ Experiment indicated that fine-tuning in the tangent space significantly improve
 
 \subsection{Data Set}
 MNIST (Modified national institute of standards and technology) digits dataset is a large dataset used in computer vision field for classification of numbers. MNIST dataset contain 60000 images for training and validation as well as 10000 images for training purpose. Size of each images is 28 * 28. 
+By using Pytorch’s’torchvision’ library download and load the handwritten digits dataset of MNIST. Also performing the pre-processing step on dataset by converting each image to tensor also normalize each tensor using transform.Compose. There are 60000 samples in the training dataset and dimension of each image in dataset in [1, 28, 28]. MNIST Digits dataset contain 0 to 9 unique classes. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{mnist_train.png}
+\end{figure}
 
-By using Pytorch’s’torchvision’ library download and load the handwritten digits dataset of MNIST. Also performing the pre-processing step on dataset by converting each image to tensor also normalize each tensor using transform.Compose. There are 60000 samples in the training dataset and dimension of each image in dataset in [1, 28, 28]. MNIST Digits dataset contain 0 to 9 unique classes. Here is the visualization of all classes using bar plot to show the count of each class in the train dataset.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{mnist_test.png}
+\end{figure}
+
+Here is the visualization of all classes using bar plot to show the count of each class in the train and test dataset.
+
+\vspace{0.5cm}
 Now we extracted 1000 samples of each class 3, 4 and 7 from the training dataset and saved in the separate files for later use. Now 57000samples left in the training dataset that we saved in another file train\_rem.pkl. Now load the training dataset from train\_rem.pklfile also load the testing dataset. Following is the EDA of training and testing datasets.
 
 Training data:
-o	Total Samples: 57000
-o	Number of Classes: 10
-o	Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-o	Train Data Shape: torch.Size([32, 1, 28, 28])
-o	Train Labels Shape: torch.Size([32])
+\begin{itemize}
+    \item Total Samples: 57000
+    \item Number of Classes: 10
+    \item Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  \item Train Data Shape: torch.Size([32, 1, 28, 28])
+  \item Train Labels Shape: torch.Size([32])
+\end{itemize}
+\vspace{0.3cm}
 Visualizing random samples of train dataset
 
-Train data classes distribution using boxplot
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{train\_head.png}
+\end{figure}
 
+Train data classes distribution using boxplot
 Testing Dataset:
-o	Total Samples: 10000
-o	Number of Classes: 10
-o	Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-o	Test Data Shape: torch.Size([32, 1, 28, 28])
-o	Test Labels Shape: torch.Size([32])
+\begin{itemize}
+    \item Total Samples: 10000
+    \item Number of Classes: 10
+    \item Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  \item Test Data Shape: torch.Size([32, 1, 28, 28])
+  \item Train Test Labels Shape: torch.Size([32])
+\end{itemize}
+\vspace{0.3cm}
 Visualizing random samples of test dataset
 
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{test\_head.png}
+\end{figure}
 
 
 \subsection{Enviornment Specifications}
@@ -152,8 +176,6 @@ We perform training on 57000 samples using 50 epochs with a batch size of 32 usi
 After this we merge the all three classes samples together and then perform training using 10 epochs over the predefined model and then evaluate the performance.
 
 
-
-
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.4\textwidth, keepaspectratio]{fig1.png}
@@ -170,27 +192,27 @@ figures and tables after they are cited in the text. Use the abbreviation
 %``Fig.~\ref{fig}'', even at the beginning of a sentence.
 
 \begin{table}[htbp]
-\caption{Table Type Styles}
+\caption{Performance Evaluation Table}
 \begin{center}
-\begin{tabular}{|c|c|c|c|}
+\begin{tabular}{|c|c|c|}
 \hline
-\textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
-\cline{2-4} 
-\textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
+\textbf{Data} & \textbf{Accuracy (\%)} & \textbf{Loss} \\ 
 \hline
-copy& More table copy$^{\mathrm{a}}$& &  \\
+Pre-trained model & 92 & 0.38 \\ 
 \hline
-\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
+Fine-tuned on combined tasks & 70 & 2.1 \\ 
+\hline
+Fine-tuned on individual tasks & 88 & 0.60 \\ 
+\hline
 \end{tabular}
-\label{tab1}
+\label{tab:performance}
 \end{center}
 \end{table}
 
 
+
 \section{Conclusion}
 In this paper we introduced the best practice to fine-tune the models. For Images dataset the model performed well following out technique. Fine-tune the model individually on each task results in better accuracy as compared to fine-tune on combined tasks. This technique is simple but has a huge impact in terms of transfer learning. We will further test it on other datasets for generalization and then move to next step which is to edit models through task arithmetic (Addition or Subtraction).
-
-
 
 
 \begin{thebibliography}{00}
