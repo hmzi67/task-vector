@@ -43,8 +43,18 @@ Training a model is the backbone of Machine learning because all the decisions w
 \section{Introduction}
 In the last few years AI (Artificial Intelligence) has taken the world. AI models are trained on data to perform specific tasks. Common type of AI models include Supervised learning models which are trained in labeled data to predict outcomes such as regression and classification , Unsupervised learning models  which are trained on unlabeled data to identify patterns such as K means classification, Deep learning models which uses neural networks like humans and process complex data like images, voice notes etc. AI models are used commonly as core of AI, we often edit them after training to achieve desired results. We train them to change the behavior, if we want to increase the response of specific class in case of classification then we need to retrain the model accordingly and vice versa. This process is called fine-tuning and it is different from training a model. In the context of training the model has not learned anything we assign it parameters and weights to operate while fine-tuning is process after training model where we take the pre trained model’s behavior as a starting point and then tune it on specific tasks. 
 
-While performing fine tuning for experimentation on MNIST dataset we observed that overall our accuracy is decreasing, before fine tuning our accuracy was 91.70\% and after fine tuning our accuracy decreased to 70\% which is a huge difference.
+While performing fine tuning for experimentation on MNIST dataset we observed that overall our accuracy is decreasing, before fine tuning our accuracy was 91.70\% and after fine tuning our accuracy decreased to 70\% which is a huge difference. The proces of fine-tuning is very expensive as we need to follow the same steps which we follow while training model first time so our time is utilized, resources are utilized as we need the current model and its parameters for fine-tuning, increase in the utilization of resources direcly impacts the cost due to which cost also increases. To smooth this process of retraining model new method was proposed which was editing models with task aritmmetic operations. Here we use task vector which is basically our target to retrain the model , we use the arithmetic operation like subtraction or addition to retrain the pre-trained model.When we need to increase the reponse of a specific task we will make its vector and directly peroform the addition of pretrained model and our task vector which results in new model which is now trained on new parameters according to your requirements and here the cost and resources used are very less as compared to fine-tuning , same is the cases with dubtraction, if we want to decraese the respons of task on model we will retrain it on that task. Task vectors the a vector formed by the difference of fine-tuned model and pretrained model. I can be single task or combination of multiple tasks. Currently we will focus on the process of fine-tuning that how can we improve its accuracy and smoothes the process. After tat we will come to task arithmetic operations which is much better than fine-tuning in terms of cost and resources. 
 
+\subsection*{Summary of the Fine-Tuning Process}
+In this approach, the pre-trained model \( \mathcal{M} \) is fine-tuned incrementally on datasets corresponding to individual classes. Instead of merging datasets, we fine-tune the model sequentially for better class-specific learning.
+
+\begin{enumerate}
+    \item We begin by fine-tuning the pre-trained model on data from class 1, updating its parameters to \( \theta_1 \).
+    \item Next, the model fine-tuned on class 1 is further fine-tuned on data from class 2, resulting in updated parameters \( \theta_2 \).
+    \item Finally, the model fine-tuned on class 2 is fine-tuned on class 3, producing the final model with parameters \( \theta_3 \).
+\end{enumerate}
+
+This method ensures that each class contributes to the model's performance individually, preventing performance degradation that can arise from merging tasks. As a result, we achieved a significant accuracy improvement compared to merging all classes before fine-tuning.so we can say that best practice is to train model on each task individually instead of merging them and then training them.
 
 \subsection{Methamatical Equations}
 The fine-tuning process can be mathematically represented as follows:
@@ -75,16 +85,7 @@ Here:
     \item \( \mathcal{M}_i(\theta_i) \) denotes the model fine-tuned after training on class \( i \).
 \end{itemize}
 
-\subsection*{Summary of the Fine-Tuning Process}
-In this approach, the pre-trained model \( \mathcal{M} \) is fine-tuned incrementally on datasets corresponding to individual classes. Instead of merging datasets, we fine-tune the model sequentially for better class-specific learning.
 
-\begin{enumerate}
-    \item We begin by fine-tuning the pre-trained model on data from class 1, updating its parameters to \( \theta_1 \).
-    \item Next, the model fine-tuned on class 1 is further fine-tuned on data from class 2, resulting in updated parameters \( \theta_2 \).
-    \item Finally, the model fine-tuned on class 2 is fine-tuned on class 3, producing the final model with parameters \( \theta_3 \).
-\end{enumerate}
-
-This method ensures that each class contributes to the model's performance individually, preventing performance degradation that can arise from merging tasks. As a result, we achieved a significant accuracy improvement compared to merging all classes before fine-tuning.
 
 \section{Related Work}
 \paragraph{Editing Models with Task Arithmetic} Training a model is the backbone of Machine learning because all the decisions will be done on its basis\cite{paper-1}. Once training is done we retrain it according to our needs and feedback. This process is very costly due to following factors:
