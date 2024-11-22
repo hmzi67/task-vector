@@ -107,17 +107,35 @@ Experiment indicated that fine-tuning in the tangent space significantly improve
 
 
 \section{Design and Implementation}
-Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. Figure captions should be 
-below the figures; table heads should appear above the tables. Insert 
-figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
+%``Fig.~\ref{fig}'', even at the beginning of a sentence.
 
 \subsection{Data Set}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. 
+MNIST (Modified national institute of standards and technology) digits dataset is a large dataset used in computer vision field for classification of numbers. MNIST dataset contain 60000 images for training and validation as well as 10000 images for training purpose. Size of each images is 28 * 28. 
+
+By using Pytorch’s’torchvision’ library download and load the handwritten digits dataset of MNIST. Also performing the pre-processing step on dataset by converting each image to tensor also normalize each tensor using transform.Compose. There are 60000 samples in the training dataset and dimension of each image in dataset in [1, 28, 28]. MNIST Digits dataset contain 0 to 9 unique classes. Here is the visualization of all classes using bar plot to show the count of each class in the train dataset.
+Now we extracted 1000 samples of each class 3, 4 and 7 from the training dataset and saved in the separate files for later use. Now 57000samples left in the training dataset that we saved in another file train\_rem.pkl. Now load the training dataset from train\_rem.pklfile also load the testing dataset. Following is the EDA of training and testing datasets.
+
+Training data:
+o	Total Samples: 57000
+o	Number of Classes: 10
+o	Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+o	Train Data Shape: torch.Size([32, 1, 28, 28])
+o	Train Labels Shape: torch.Size([32])
+Visualizing random samples of train dataset
+
+Train data classes distribution using boxplot
+
+Testing Dataset:
+o	Total Samples: 10000
+o	Number of Classes: 10
+o	Classes: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+o	Test Data Shape: torch.Size([32, 1, 28, 28])
+o	Test Labels Shape: torch.Size([32])
+Visualizing random samples of test dataset
+
+
+
+
 
 \subsection{Enviornment Specifications}
 \paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
@@ -125,9 +143,15 @@ bottom of columns. Avoid placing them in the middle of columns. Large
 figures and tables may span across both columns. 
 
 \subsection{Methodology}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. 
+Let’s suppose you are a student and your professor assigned you a task to learn 30 topics till tomorrow, Will you be able to learn it? Yes, you can but your performance will be compromised. Now if you are asked to learn 10 topics in a day and total 30 topics in 3 days. Now your response will be much better as compared to first case. Here we used the same concept in our training. Instead of fine tuning our model on all three classes on a single run, we separately fine-tuned the model on each class. As a result, our model performed better when we separately fine-tuned model. 
+We extracted 1000 samples of each class 3, 4 and 7 from the training dataset and saved in the separate files for later use. Now 57000 samples left in the training dataset that we saved in another file train\_rem.pkl. Now load the training dataset from train\_rem.pkl file also load the testing dataset. As we know train data contain 57000 samples and 10000 samples are in test data. After performing initial EDA, we define the Simple Neural Network (SimpleNN) model which we’ll use for training the model. Dataset is already splitted in training and testing. Then we use the Cross Entropy Loss function and Adam optimizer to minimize the loss function. Here is the mathematical representation of cross entropy loss.
+
+\begin{equation}
+H(p, q) = - \sum\_{x \in \mathcal{X}} p(x) \log q(x).
+\end{equation}
+
+We perform training on 57000 samples using 50 epochs with a batch size of 32 using SimpleNN model with 109386 parameters. We achieved 91.7\% accuracy on testing data when we test the dataset. Now after evaluation performance metrices we load those files that we have saved earlier. After performing its EDA, we further train these classes over the pretrained model step by step. First, we train class 3 samples on the pretrained model using 10 epochs and evaluate its performance. Similarly, we train and evaluate class 4 sample and class 7 samples reactively. Basically we are performing finetuning
+After this we merge the all three classes samples together and then perform training using 10 epochs over the predefined model and then evaluate the performance.
 
 \begin{table}[htbp]
 \caption{Table Type Styles}
@@ -152,15 +176,6 @@ copy& More table copy$^{\mathrm{a}}$& &  \\
 \label{fig}
 \end{figure}
 
-Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
-rather than symbols or abbreviations when writing Figure axis labels to 
-avoid confusing the reader. As an example, write the quantity 
-``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
-units in the label, present them within parentheses. Do not label axes only 
-with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
-\{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
-quantities and units. For example, write ``Temperature (K)'', not 
-``Temperature/K''.
 
 \section{Evaluation}
 \paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
