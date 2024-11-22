@@ -8,28 +8,26 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
 \title{MUSIC: Make Unification Simple In Image Classification \\}
 
-\author{\IEEEauthorblockN{Muhammad Shahbaz}
-\IEEEauthorblockA{\textit{MSDS} \\
-\textit{24I-8029}\\}
-\and
-\IEEEauthorblockN{Hamza Waheed}
-\IEEEauthorblockA{\textit{MSDS} \\
-\textit{24I-7628}\\}
-\and
-\IEEEauthorblockN{Abdullah Asghar}
-\IEEEauthorblockA{\textit{MSDS} \\
-\textit{24I-8000}\\}
-\and
-\IEEEauthorblockN{Abdul Wahab}
-\IEEEauthorblockA{\textit{MSDS} \\
-\textit{24I-8034}\\}
+\author{
+    \IEEEauthorblockN{Muhammad Shahbaz\IEEEauthorrefmark{1}, 
+                      Hamza Waheed\IEEEauthorrefmark{1}, 
+                      Abdullah Asghar\IEEEauthorrefmark{1}, 
+                      Abdul Wahab\IEEEauthorrefmark{1}}
+    \IEEEauthorblockA{
+        \textit{Masters in Data Science} \\
+        \textit{FAST National University of Computer and Emerging Sciences} \\
+        Emails: i248029@isb.nu.edu.pk, i247628@isb.nu.edu.pk, 
+        i248000@isb.nu.edu.pk, wahab24@example.com
+    }
 }
+
 
 
 \maketitle
@@ -43,7 +41,7 @@ Training a model is the backbone of Machine learning because all the decisions w
 \end{IEEEkeywords}
 
 \section{Introduction}
-In the last few years AI (Artificial Intelligence) has taken the world \cite{homer_simpson}. AI models are trained on data to perform specific tasks. Common type of AI models include Supervised learning models which are trained in labeled data to predict outcomes such as regression and classification , Unsupervised learning models  which are trained on unlabeled data to identify patterns such as K means classification, Deep learning models which uses neural networks like humans and process complex data like images, voice notes etc. AI models are used commonly as core of AI, we often edit them after training to achieve desired results. We train them to change the behavior, if we want to increase the response of specific class in case of classification then we need to retrain the model accordingly and vice versa. This process is called fine-tuning and it is different from training a model. In the context of training the model has not learned anything we assign it parameters and weights to operate while fine-tuning is process after training model where we take the pre trained model’s behavior as a starting point and then tune it on specific tasks. 
+In the last few years AI (Artificial Intelligence) has taken the world. AI models are trained on data to perform specific tasks. Common type of AI models include Supervised learning models which are trained in labeled data to predict outcomes such as regression and classification , Unsupervised learning models  which are trained on unlabeled data to identify patterns such as K means classification, Deep learning models which uses neural networks like humans and process complex data like images, voice notes etc. AI models are used commonly as core of AI, we often edit them after training to achieve desired results. We train them to change the behavior, if we want to increase the response of specific class in case of classification then we need to retrain the model accordingly and vice versa. This process is called fine-tuning and it is different from training a model. In the context of training the model has not learned anything we assign it parameters and weights to operate while fine-tuning is process after training model where we take the pre trained model’s behavior as a starting point and then tune it on specific tasks. 
 
 While performing fine tuning for experimentation on MNIST dataset we observed that overall our accuracy is decreasing, before fine tuning our accuracy was 91.70\% and after fine tuning our accuracy decreased to 70\% which is a huge difference.
 
@@ -89,17 +87,17 @@ In this approach, the pre-trained model \( \mathcal{M} \) is fine-tuned incremen
 This method ensures that each class contributes to the model's performance individually, preventing performance degradation that can arise from merging tasks. As a result, we achieved a significant accuracy improvement compared to merging all classes before fine-tuning.
 
 \section{Related Work}
-\paragraph{Editing Models with Task Arithmetic} Training a model is the backbone of Machine learning because all the decisions will be done on its basis. Once training is done we retrain it according to our needs and feedback. This process is very costly due to following factors:
+\paragraph{Editing Models with Task Arithmetic} Training a model is the backbone of Machine learning because all the decisions will be done on its basis\cite{paper-1}. Once training is done we retrain it according to our needs and feedback. This process is very costly due to following factors:
 Time and capital is effected most on retraining as we need to perform that process again so more time is utilized due to which more money is exhausted. We only have trained model instead of training data so we need to collect it again so need resources to do it.
 Fine tuning was introduced to address this problem but it requires labeled data so we need more efficient solution, here comes the solution of editing models with task arithmetic operations using task vectors. Task vector is weights in direction (Positive / Negative) which help the model to perform better.
 For example if we want to mitigate undesirable behaviors then we can change behaviors of model by negating as task vector similarly if we can to make model to learn new thing then we can do it by adding task vector. This performs well target tasks or even also improves performance and also efficient to compute as compared to fine tuning.
 
-\paragraph{LANGUAGE MODELS ARE HOMER SIMPSON! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic} The introduction tells about the advances and growth of LLMs, which have demonstrated satisfaction in different tasks. However, the fine-tuning process, which is meant to improve the model functionality in defined areas, usually results in compromise of safety. The authors cite earlier works that explain how fine-tuning can argue indirectly make the models unsafe. Here comes the concept of RESTA, whose aim is to reinstate safety without paying a heavy  price in performance appeal.
+\paragraph{LANGUAGE MODELS ARE HOMER SIMPSON! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic} The introduction tells about the advances and growth of LLMs\cite{paper-2}, which have demonstrated satisfaction in different tasks. However, the fine-tuning process, which is meant to improve the model functionality in defined areas, usually results in compromise of safety. The authors cite earlier works that explain how fine-tuning can argue indirectly make the models unsafe. Here comes the concept of RESTA, whose aim is to reinstate safety without paying a heavy  price in performance appeal.
 The RESTA Method can be defined in either terms – simplicity and effectiveness. The primary activity consists of a safety vector being added in an elemental manner, to the model parameters. In addition to the authors also came up with a method called Drop and REscale (DARE) which assists in eliminating the extra parameters that were captured during the fine-tuning to increase the efficiency of the safety vectors.
 The authors made evaluations of RESTA on two ways of fine-tuning parameters called the parameter efficient fine-tuning PEFT and the full fine-tuning FullFT. It was observed that these two approaches compromised the safety of the models when used on several tasks, including those with harmless datasets. In order to evaluate the performance of RESTA, the authors created a safety evaluation benchmark known as CATQA, which contains 550 dangerous questions that have been divided into 11 groups, each of 5 sub-categories. Such a benchmark was purposefully developed in order to include all the abusive cases specified by OpenAI and Meta’s usage regulations.
 As it turned out, the results of the evaluations were promising. The authors noted that the fine-tuned models had a great decrease in the unsafety scores after applying RESTA. When for instance, the Llama-2 model was tested on CATQA, the unsafety score reduced from 33.57\% to 12.17\% in PEFT while in FullFT, the figure reduced from 22.16\% to 4.34\%. These results shows that RESTA enhances safety without compromising the performance of the model in a variety of tasks.
 
-\paragraph{Task Arithmetic in the Tangent Space: Improved Editing of Pre-Trained Models} Task arithmetic refers to the ability to perform arithmetic operations on the weights of a model to get desired outcomes for multiple tasks. This is cost-effective and scalable approach to edit pre-trained models directly in weight space. By changing the weights associated with different tasks, researchers can enhance a model's performance on those tasks or even negate certain tasks, leading to a phenomenon known as task forgetting. The authors highlight that traditional model editing methods often involve costly joint fine-tuning across multiple tasks, which can degrade the model's pre-training performance or zero-shot accuracy. Task arithmetic offers a promising alternative by allowing for more efficient adjustments to the model's weights.
+\paragraph{Task Arithmetic in the Tangent Space: Improved Editing of Pre-Trained Models} Task arithmetic refers to the ability to perform arithmetic operations on the weights of a model to get desired outcomes for multiple tasks\cite{paper-3}. This is cost-effective and scalable approach to edit pre-trained models directly in weight space. By changing the weights associated with different tasks, researchers can enhance a model's performance on those tasks or even negate certain tasks, leading to a phenomenon known as task forgetting. The authors highlight that traditional model editing methods often involve costly joint fine-tuning across multiple tasks, which can degrade the model's pre-training performance or zero-shot accuracy. Task arithmetic offers a promising alternative by allowing for more efficient adjustments to the model's weights.
 One of the most important contributions of the paper is a proposal to linearizing models in order to enhance weight disentanglement. The authors show that fine-tuning a model in its tangent space can amplify the disentanglement of weights and thus effectively improve performances across benchmark arithmetic tasks. Finally, the authors presented empirical results that linearizing models can bring 5.8 points of accuracy in task addition and 13.1 points less in task negation on various vision-language benchmarks.
 
 Experiment indicated that fine-tuning in the tangent space significantly improved the arithmetic benchmark for most tasks compared to the pre-trained models. 
@@ -138,9 +136,9 @@ Visualizing random samples of test dataset
 
 
 \subsection{Enviornment Specifications}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. 
+It is necessary to stress that all factors of the experimental setting were chosen deliberately. The implementation was done in Python 3.12 and the PyTorch Lib 2.0.1 for purposes of model designing and training. Data cleaning and initial data exploration were done with NumPy and Pandas while the metric calculations were done with the use of scikit-learn 1.3.1. For data visualization, Matplotlib and Seaborn libraries were used because they provide easy to understand plots and charts. The code execution was carried out from within Jupyter Notebook, which is operated from the Anaconda platform. Since, it was essential to maintain homogeneity and compartmentalization of all application dependent elements, a virtual environment was built out using pip and conda. The experiments were carried out on the CPU given the unavailability of a GPU, while computational threading was used to enhance concurrency.
+
+The hardware specifications of the system used were as follows: A MacBook Pro using kernel release 24.1.0, architecture: x86\_64. The system was run with an OS of 2.8 GHz Quad-Core Intel Core i7 processor featuring 4 physical cores, 4 spares and thus 8 CPUs. For the computational needs in the experiments, it had 16 GB of 2133 MHz LPDDR3 RAM for sufficient resources.
 
 \subsection{Methodology}
 Let’s suppose you are a student and your professor assigned you a task to learn 30 topics till tomorrow, Will you be able to learn it? Yes, you can but your performance will be compromised. Now if you are asked to learn 10 topics in a day and total 30 topics in 3 days. Now your response will be much better as compared to first case. Here we used the same concept in our training. Instead of fine tuning our model on all three classes on a single run, we separately fine-tuned the model on each class. As a result, our model performed better when we separately fine-tuned model. 
@@ -152,6 +150,24 @@ H(p, q) = - \sum\_{x \in \mathcal{X}} p(x) \log q(x).
 
 We perform training on 57000 samples using 50 epochs with a batch size of 32 using SimpleNN model with 109386 parameters. We achieved 91.7\% accuracy on testing data when we test the dataset. Now after evaluation performance metrices we load those files that we have saved earlier. After performing its EDA, we further train these classes over the pretrained model step by step. First, we train class 3 samples on the pretrained model using 10 epochs and evaluate its performance. Similarly, we train and evaluate class 4 sample and class 7 samples reactively. Basically we are performing finetuning
 After this we merge the all three classes samples together and then perform training using 10 epochs over the predefined model and then evaluate the performance.
+
+
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.4\textwidth, keepaspectratio]{fig1.png}
+    
+\end{figure}
+
+
+\section{Evaluation}
+\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
+bottom of columns. Avoid placing them in the middle of columns. Large 
+figures and tables may span across both columns. Figure captions should be 
+below the figures; table heads should appear above the tables. Insert 
+figures and tables after they are cited in the text. Use the abbreviation 
+%``Fig.~\ref{fig}'', even at the beginning of a sentence.
 
 \begin{table}[htbp]
 \caption{Table Type Styles}
@@ -170,20 +186,6 @@ copy& More table copy$^{\mathrm{a}}$& &  \\
 \end{center}
 \end{table}
 
-\begin{figure}[htbp]
-\centerline{\includegraphics{fig1.png}}
-\caption{Example of a figure caption.}
-\label{fig}
-\end{figure}
-
-
-\section{Evaluation}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. Figure captions should be 
-below the figures; table heads should appear above the tables. Insert 
-figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
 
 \section{Conclusion}
 In this paper we introduced the best practice to fine-tune the models. For Images dataset the model performed well following out technique. Fine-tune the model individually on each task results in better accuracy as compared to fine-tune on combined tasks. This technique is simple but has a huge impact in terms of transfer learning. We will further test it on other datasets for generalization and then move to next step which is to edit models through task arithmetic (Addition or Subtraction).
@@ -192,13 +194,10 @@ In this paper we introduced the best practice to fine-tune the models. For Image
 
 
 \begin{thebibliography}{00}
-\bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-\bibitem{homer_simpson} Rishabh Bhardwaj, Do Duc Anh, and Soujanya Poria, Language Models are Homer Simpson! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic, 2024.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
+\bibitem{paper-1} Gabriel Ilharco, Marco Tulio Ribeiro, Mitchell Wortsman, Suchin Gururangan, Ludwig Schmidt, Hannaneh Hajishirzi, Ali Farhadi, EDITING MODELS WITH TASK ARITHMETIC, 2024.
+\bibitem{paper-2} Rishabh Bhardwaj, Do Duc Anh, and Soujanya Poria, Language Models are Homer Simpson! Safety Re-Alignment of Fine-tuned Language Models through Task Arithmetic, 2024.
+\bibitem{paper-3} Guillermo Ortiz-Jimenez and Alessandro Favero,Task Arithmetic in the Tangent Space:Improved Editing of Pre-Trained Models, 2024.
+
 \end{thebibliography}
 
 

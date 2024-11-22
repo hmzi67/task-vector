@@ -2640,7 +2640,7 @@
 \def\l@paragraph{\@dottedtocline{4}{6.5em}{5.5em}}
 \def\l@subparagraph{\@dottedtocline{5}{6.5em}{6.5em}}
 \def\listoffigures{\section*{\listfigurename}\@starttoc{lof}}
-\def\l@figure{\@dottedtocline{1}{0em}{2.75em}}
+\def\l@figure{\@dottedtocline{1}{0em}{2em}}
 \def\listoftables{\section*{\listtablename}\@starttoc{lot}}
 \let\l@table\l@figure
 
