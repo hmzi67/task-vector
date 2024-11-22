@@ -35,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-Training a model is the backbone of Machine learning because all the decisions will be done on its basis. Once it is trained we further improve it on the basis of feedback and our requirements. To perform this we use the process of fine-tuning, it is process to further retrain the pre-trained model on small target dataset, we combine multiple tasks and then retrain it on already trained model to improve the performance on these specific tasks. We observed the flaw in the process that when we merge our tasks and then do fine-tuning, our performance decreases. To solve this issue the concept of MUSIC (Make Utility Simple In Image Classification) takes place, we simply fine-tune the model on each task individually instead of merging them as one and as a result we achieved accuracy of 88\% from 70\% which is a drastic difference. 
+Training a model is the backbone of Machine learning because all the decisions will be done on its basis. Once it is trained we further improve it on the basis of feedback and our requirements. To perform this we use the process of fine-tuning, it is process to further retrain the pre-trained model on small target dataset, we combine multiple tasks and then retrain it on already trained model to improve the performance on these specific tasks. The accuracy achieved is very low after fine-tuning.We observed the flaw in the process that when we merge our tasks and then do fine-tuning, our performance decreases. To solve this issue the concept of MUSIC (Make Utility Simple In Image Classification) takes place, we simply fine-tune the model on each task individually instead of merging them as one and as a result we achieved accuracy of 88\% from 70\% which is a drastic difference. 
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -174,26 +174,7 @@ figures and tables after they are cited in the text. Use the abbreviation
 In this paper we introduced the best practice to fine-tune the models. For Images dataset the model performed well following out technique. Fine-tune the model individually on each task results in better accuracy as compared to fine-tune on combined tasks. This technique is simple but has a huge impact in terms of transfer learning. We will further test it on other datasets for generalization and then move to next step which is to edit models through task arithmetic (Addition or Subtraction).
 
 
-\section*{References}
 
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
-
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
-
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
-
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
 
 \begin{thebibliography}{00}
 \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
