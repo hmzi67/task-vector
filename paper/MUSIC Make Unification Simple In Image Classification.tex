@@ -185,7 +185,7 @@ After this we merge the all three classes samples together and then perform trai
 
 
 \section{Evaluation}
-The proposed system MUSIC was trained on the MNIST digits dataset to 50 epochs. Thereupon, the datasets were partitioned into classes; some of the data, and the rest of the data was then utilized to train a pre-trained model. The classes which were extracted were 3, 4 and 7 chosen for further training both alone and in conjunction to obtain the end result. Training performance over the epochs portrayed a sign of improvement as illustrated by a reduction of training loss while the accuracy Continued to rise.  The accuracy for the final training set was 99.29\% while the accuracy for the test set was 91.78\% and the minimum value of test loss was 0.17. The outcomes of these metrics show that the model has a great potential on generalizing over the whole set in the first stage of the training.
+The proposed system MUSIC was trained on the MNIST digits dataset to 50 epochs. Thereupon, the datasets were partitioned into classes; some of the data, and the rest of the data was then utilized to train a pre-trained model. The classes which were extracted were 3, 4 and 7 chosen for further training both alone and in conjunction to obtain the end result. Training performance over the epochs portrayed a sign of improvement as illustrated by a reduction of training loss while the accuracy Continued to rise.  The accuracy for the final training set was 99\% while the accuracy for the test set was 92\% and the value of test loss was 0.38. The outcomes of these metrics show that the model has a great potential on generalizing over the whole set in the first stage of the training.
 
 
 \begin{figure}[h]
@@ -194,12 +194,12 @@ The proposed system MUSIC was trained on the MNIST digits dataset to 50 epochs. 
     
 \end{figure}
 
-To increase the performance of fine-tuning, the extracted classes were trained in separate from the pre-trained model for ten passes. In the fine-tuning process, performance for the individual classes was higher than the performance of the individual classes all summed up. In particular, the test accuracy obtained in class 3 was 83.61\%, while recall increased significantly. As for class 4, the achieved test accuracy is 86,62\%, while the precision and recall rates have been increased. Likewise, class 7 yielded a test accuracy of 87.53\% which corroborated that the proposed model is sensitive to individualistic class fine tuning. 
+To increase the performance of fine-tuning, the extracted classes were trained in separate from the pre-trained model for ten passes. In the fine-tuning process, performance for the individual classes was higher than the performance of the individual classes all summed up. In particular, the test accuracy obtained in class 3 was 83.61\%, while recall increased significantly. As for class 4, the achieved test accuracy is 86.62\%, while the precision and recall rates have been increased. Likewise, class 7 yielded a test accuracy of 88\% which corroborated that the proposed model is sensitive to individualistic class fine tuning. 
 
 
 %``Fig.~\ref{fig}'', even at the beginning of a sentence.
 
-On the other hand, when the classes were introduced into a unified dataset for jointly fine-tuning the test accuracy came down to 70.03\%. This decline implies that there might be some issues related to dataset biases or of generalization performance when using merged class datasets.
+On the other hand, when the classes were introduced into a unified dataset for jointly fine-tuning the test accuracy came down to 70\%. This decline implies that there might be some issues related to dataset biases or of generalization performance when using merged class datasets.
 
 The metrics of classification also show us the efficiency of the entire model and what aspects could be improved. For class 1, the highest precision of 0.99 was achieved, whereas for class 0 the highest recall of 0.98 was obtained with the average F1-score of 0.92 of the baseline model. By looking at the confusion matrix it was evident that the proposed model was more accurate when fine-tuned on singular classes over the merged data set. They also reported problems when interpreting numbers that are visually similar: 3 and 8 for example. The structure of the confusion matrix helped to identify additional information about model performance for individual or merged classes and support the idea of fine-tuning for certain classes.
 
