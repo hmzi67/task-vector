@@ -33,8 +33,9 @@
 \maketitle
 
 \begin{abstract}
-Training a model is the backbone of Machine learning because all the decisions will be done on its basis. Once it is trained we further improve it on the basis of feedback and our requirements. To perform this we use the process of fine-tuning, it is process to further retrain the pre-trained model on small target dataset, we combine multiple tasks and then retrain it on already trained model to improve the performance on these specific tasks. The accuracy achieved is very low after fine-tuning.We observed the flaw in the process that when we merge our tasks and then do fine-tuning, our performance decreases. To solve this issue the concept of MUSIC (Make Utility Simple In Image Classification) takes place, we simply fine-tune the model on each task individually instead of merging them as one and as a result we achieved accuracy of 88\% from 70\% which is a drastic difference. 
+Retraining a deep learning model is not always possible or feasible due to multiple factors like training cost, unavailability of training data, copy rights etc. With better availability of open source pre-trained models, fine-tuning of pre-trained models on specific tasks is becoming popular. Recent techniques of fine-tuning models work very well on individual tasks but their accuracy is questionable when it comes to fine-tuning them on multiple tasks. During this study we discovered that the sequence of fine-tuning these models is also important. Model accuracy drastically dropped to 70\% when we further trained it on three tasks combined. In the other hand fine-tuning on those selected tasks one by one yielded significantly better accuracy of 88\%.
 \end{abstract}
+
 
 \begin{IEEEkeywords}
 \vspace{0.5cm} \\ Fine-tuning, Editng models, Artificial Intelligence
@@ -55,6 +56,8 @@ In this approach, the pre-trained model \( \mathcal{M} \) is fine-tuned incremen
 \end{enumerate}
 
 This method ensures that each class contributes to the model's performance individually, preventing performance degradation that can arise from merging tasks. As a result, we achieved a significant accuracy improvement compared to merging all classes before fine-tuning.so we can say that best practice is to train model on each task individually instead of merging them and then training them.
+
+\vspace{1cm}
 
 \subsection{Methamatical Equations}
 The fine-tuning process can be mathematically represented as follows:
